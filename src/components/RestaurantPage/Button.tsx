@@ -7,10 +7,10 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({ text, onClick }) => {
   return (
-    <div className="fixed top-[50px] left-1/2 transform -translate-x-1/2 flex justify-center items-center">
+    <div className="flex justify-center my-[50px]">
       <button
         onClick={onClick}
-        className="w-[300px] h-[40px] bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 transition-all"
+        className="btn btn-primary w-11/12 sm:w-[350px] md:w-[400px] max-w-[450px] min-w-[200px] h-[50px] font-semibold rounded-md shadow-md text-xl"
       >
         {text}
       </button>

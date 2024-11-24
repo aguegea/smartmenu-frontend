@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Card } from './RestaurantCard';
+import { Card } from './Card';
 import { Loading } from './Loading';
 
 interface Restaurant {
@@ -46,13 +46,8 @@ export const ScrollContainer: React.FC = () => {
   };
 
   const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
-      document.documentElement.scrollHeight
-    ) {
-      if (hasMore) {
-        fetchRestaurants();
-      }
+    if ( window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight && hasMore) {
+      fetchRestaurants();
     }
   };
 
@@ -67,11 +62,13 @@ export const ScrollContainer: React.FC = () => {
   });
 
   return (
-    <div className="flex flex-col items-center max-w-[400px] w-full mx-auto my-4 gap-4">
-      <h1>Choose your restaurant</h1>
+    <div className="flex flex-col items-center max-w-[600px] w-full mx-auto my-4 gap-4">
+      <h1 className="text-3xl font-bold text-base-content text-center my-4">Choose your restaurant:</h1>
+      <div className="flex flex-wrap justify-center gap-4">
         {restaurants.map((restaurant) => (
-          <Card title={restaurant.name} id={restaurant._id} />
+          <Card key={restaurant._id} title={restaurant.name} id={restaurant._id} />
         ))}
+      </div>
         {hasMore && <Loading />}
     </div>
   );

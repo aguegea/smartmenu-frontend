@@ -11,6 +11,7 @@ interface OrdersProps {
 }
 
 export const Orders: React.FC<OrdersProps> = ({ orders, loading, fetchOrders, restaurantId }) => {
+    const API_URL = process.env.REACT_APP_API_URL;
     const [expandedOrders, setExpandedOrders] = useState<{[key: string]: boolean}>({}); // Objeto clave-valor. El booleano indica las ordenes expandidas.
 
     const toggleOrder = (orderId: string) => {
@@ -23,7 +24,7 @@ export const Orders: React.FC<OrdersProps> = ({ orders, loading, fetchOrders, re
     const deleteOrder = async (orderId: string) => {
         try {
             await axios.delete(
-                `http://localhost:3001/api/restaurants/${restaurantId}/orders/${orderId}`,
+                `${API_URL}/api/restaurants/${restaurantId}/orders/${orderId}`,
             );
             fetchOrders(); // Fetcheo de nuevo pues eliminé una orden del restaurante
         } 

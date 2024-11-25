@@ -7,6 +7,7 @@ import { Orders } from "../components/RestaurantPage/Orders";
 import { Order, ApiResponseOrders } from "../types/types";
 
 export const RestaurantPage: React.FC = () => {
+    const API_URL = process.env.REACT_APP_API_URL;
     // Estado del modal
     const { id } = useParams<{ id: string }>();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,7 +31,7 @@ export const RestaurantPage: React.FC = () => {
 
         try {
             const res = await axios.get<ApiResponseOrders>(
-                `http://localhost:3001/api/restaurants/${id}/orders`,
+                `${API_URL}/api/restaurants/${id}/orders`,
             );
             setOrders(res.data.orders);
         } 

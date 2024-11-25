@@ -10,6 +10,7 @@ interface ModalProps {
 }
 
 export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, restaurantId, fetchOrders }) => {
+    const API_URL = process.env.REACT_APP_API_URL;
     const [products, setProducts] = useState<Product[]>([]);
 
     const fetchProducts = useCallback(async () => {
@@ -17,7 +18,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, restaurantId, fet
 
         try {
             const res = await axios.get<ApiResponseProducts>(
-                `http://localhost:3001/api/restaurants/${restaurantId}/products`,
+                `${API_URL}/api/restaurants/${restaurantId}/products`,
             );
             setProducts(res.data.products);
         } 
@@ -82,7 +83,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, restaurantId, fet
 
         try {
             const response = await fetch(
-                `http://localhost:3001/api/restaurants/${restaurantId}/orders`,
+                `${API_URL}/api/restaurants/${restaurantId}/orders`,
                 {
                     method: "POST",
                     headers: {

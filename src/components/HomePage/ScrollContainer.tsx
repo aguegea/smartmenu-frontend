@@ -6,6 +6,7 @@ import { Loading } from "./Loading";
 import { Restaurant, ApiResponseHomePage } from "../../types/types";
 
 export const ScrollContainer: React.FC = () => {
+    const API_URL = process.env.REACT_APP_API_URL;
     const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
     const [skip, setSkip] = useState(0);
     const [hasMore, setHasMore] = useState(true);
@@ -18,7 +19,7 @@ export const ScrollContainer: React.FC = () => {
 
         try {
             const res = await axios.get<ApiResponseHomePage>(
-                "http://localhost:3001/api/restaurants",
+                `${API_URL}/api/restaurants`,
                 {
                     params: { skip, limit },
                 },

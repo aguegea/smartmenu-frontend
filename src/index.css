@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 .scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 html {
-  background: rgb(245, 245, 245);
+    background: rgb(245, 245, 245);
 }
